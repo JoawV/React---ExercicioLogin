@@ -1,0 +1,20 @@
+{
+  "times": [
+    {
+      "id": 1,
+      "nome": "Grêmio FBPA",
+      "estadio": "Arena OAS",
+      "local": "Porto-Alegre - RS",
+      "foto": "../assets/Gremio_logo.gif",
+      "resumo": "Imortal Tricolor"
+    },
+    {
+      "id": 2,
+      "nome": "SC Internacional",
+      "estadio": "Beira-Rio",
+      "local": "Porto-Alegre - RS",
+      "foto": "../assets/Escudo_do_Sport_Club_Internacional.svg.png",
+      "resumo": "Colorado das glórias"
+    }
+  ]
+}

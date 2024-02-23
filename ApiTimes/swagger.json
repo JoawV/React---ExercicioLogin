@@ -1,0 +1,169 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Times de Futebol",
+      "version": "1.0.0",
+      "description": "API para gerenciamento de times de futebol"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Servidor de desenvolvimento"
+      }
+    ],
+    "paths": {
+      "/times": {
+        "get": {
+          "summary": "Obter a lista de times",
+          "responses": {
+            "200": {
+              "description": "Lista de times retornada com sucesso",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "times": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Criar um novo time",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NovoTime"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Time criado com sucesso"
+            },
+            "400": {
+              "description": "Dados inválidos fornecidos"
+            }
+          }
+        }
+      },
+      "/times/{id}": {
+        "get": {
+          "summary": "Obter informações de um time pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Informações do time retornadas com sucesso",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "id": 1,
+                    "nome": "Exemplo FC",
+                    "estadio": "Estádio Principal",
+                    "local": "Cidade",
+                    "foto": "exemplo.jpg",
+                    "resumo": "Time de futebol exemplo"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Time não encontrado"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar informações de um time pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NovoTime"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Informações do time atualizadas com sucesso"
+            },
+            "404": {
+              "description": "Time não encontrado"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Excluir um time pelo ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Time excluído com sucesso"
+            },
+            "404": {
+              "description": "Time não encontrado"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "NovoTime": {
+          "type": "object",
+          "properties": {
+            "id": {
+                "type": "integer"
+            },
+            "nome": {
+              "type": "string"
+            },
+            "estadio": {
+              "type": "string"
+            },
+            "local": {
+              "type": "string"
+            },
+            "foto": {
+              "type": "string"
+            },
+            "resumo": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+  
